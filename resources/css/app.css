@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    outline: 0;
+}
+
+h1, h2, p {
+    cursor: default;
+}
+
+input[type="button"]{
+    outline: none;
+}
+input[type="button"]::-moz-focus-inner {
+    border: 0 !important;
+}
+
+button::-moz-focus-inner {
+    border: 0 !important;
+    outline: none !important;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+    margin: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+}
+
+textarea {
+  resize: none;
+}
+
+#app {
+    background: url('/images/bg-dumbbell.jpg') center center/cover no-repeat;
+}
