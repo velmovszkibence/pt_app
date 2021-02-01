@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --color-primary: #B91C1C;
+    --color-primary-light: #EF4444;
+    --color-secondary: #F3F4F6;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -46,4 +52,35 @@ textarea {
 
 #app {
     background: url('/images/bg-dumbbell.jpg') center center/cover no-repeat;
+}
+
+.line {
+	position: absolute;
+	height: 10%;
+	width: 100%;
+	background:white;
+	border-radius:10px;
+	transition: all cubic-bezier(0.25, 0.1, 0.28, 1.54) 0.32s;
+}
+
+.line1 {
+	top:19%;
+}
+
+.line2 {
+	top:49%;
+}
+
+.line3 {
+	top:79%;
+}
+
+.toggle-menu.close .line1 {
+	transform:rotate(45deg);
+	top:49%;
+}
+
+.toggle-menu.close .line2, .toggle-menu.close .line3 {
+	transform:rotate(-45deg);
+	top:49%;
 }
