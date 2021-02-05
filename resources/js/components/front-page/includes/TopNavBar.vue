@@ -1,6 +1,6 @@
 <template>
-<div>
-    <nav id="navbar" class="bg-black bg-opacity-75 text-gray-300 lg:px-10">
+<div class="min-h-1/4">
+    <nav id="navbar" class="bg-primarybl bg-opacity-75 text-gray-300 lg:px-10">
         <div class="nav-wrap max-w-screen-lg mx-auto">
             <div class="flex flex-row mx-auto py-2 border-b border-gray-600 text-sm lg:w-full">
                 <ul class="flex flex-row">
