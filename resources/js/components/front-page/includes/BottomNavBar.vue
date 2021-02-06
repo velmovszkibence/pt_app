@@ -1,6 +1,6 @@
 <template>
     <div id="footer" class="w-full bg-primarybl">
-        <nav class="py-10 grid grid-cols-2 md:grid-cols-4 justify-around bg-orange text-xs text-gray-300 text-center font-semibold">
+        <nav class="py-10 grid grid-cols-2 md:grid-cols-4 justify-around bg-orange text-xs text-heading text-center font-semibold">
             <ul class="flex flex-col justify-evenly px-4 py-6 mb-8 md:mb-0">
                 <h2 class="text-sm mb-10 sm:tracking-widest text-secondary">Dummy Text</h2>
                 <li class="py-2"><a href="#">Dummy Text</a></li>

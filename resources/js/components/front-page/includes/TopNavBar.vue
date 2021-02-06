@@ -1,6 +1,6 @@
 <template>
 <div class="min-h-1/4">
-    <nav id="navbar" class="bg-primarybl bg-opacity-75 text-gray-300 lg:px-10">
+    <nav id="navbar" class="bg-primarybl bg-opacity-75 text-heading lg:px-10">
         <div class="nav-wrap max-w-screen-lg mx-auto">
             <div class="flex flex-row mx-auto py-2 border-b border-gray-600 text-sm lg:w-full">
                 <ul class="flex flex-row">
@@ -11,6 +11,11 @@
                     <li class="px-4 flex items-center hidden sm:block"><font-awesome-icon :icon="['fa', 'phone-alt']" size="sm" /><span class="pl-2 cursor-default">434-145-813</span></li>
                 </ul>
                 <ul class="ml-auto flex flex-row">
+                    <li class="flex justify-between items-center" @click="toggleActive()">
+                        <div class="w-16 h-5 flex items-center bg-gray-300 rounded-full p-1 duration-300 ease-in-out" :class="{ 'bg-blue-200': toggleClicked}">
+                            <div class="bg-white w-8 h-4 rounded-full shadow-md transform duration-300 ease-in-out" :class="{ 'translate-x-6': toggleClicked,}"></div>
+                        </div>
+                    </li>
                     <li><a class="px-4 hover:text-primary" href="#">Sign Up</a></li>
                     <li><a class="px-4 hover:text-primary" href="#">Login</a></li>
                 </ul>
@@ -49,6 +54,7 @@ export default {
     data() {
         return {
             closeMenu: false,
+            toggleClicked: false,
             screenWidth: window.innerWidth
         }
     },
@@ -64,6 +70,17 @@ export default {
     methods: {
         resizeWidth() {
             this.screenWidth = window.innerWidth
+        },
+        toggleActive() {
+            this.toggleClicked = !this.toggleClicked
+            this.toggleTheme()
+        },
+        toggleTheme() {
+            if(this.toggleClicked === true) {
+                document.documentElement.setAttribute('data-theme', 'light')
+            } else {
+                document.documentElement.removeAttribute('data-theme')
+            }
         }
     },
 }

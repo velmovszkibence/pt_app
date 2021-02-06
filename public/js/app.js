@@ -15299,10 +15299,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       closeMenu: false,
+      toggleClicked: false,
       screenWidth: window.innerWidth
     };
   },
@@ -15315,6 +15321,17 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     resizeWidth: function resizeWidth() {
       this.screenWidth = window.innerWidth;
+    },
+    toggleActive: function toggleActive() {
+      this.toggleClicked = !this.toggleClicked;
+      this.toggleTheme();
+    },
+    toggleTheme: function toggleTheme() {
+      if (this.toggleClicked === true) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
     }
   }
 });
@@ -51342,7 +51359,7 @@ var staticRenderFns = [
           "nav",
           {
             staticClass:
-              "py-10 grid grid-cols-2 md:grid-cols-4 justify-around bg-orange text-xs text-gray-300 text-center font-semibold"
+              "py-10 grid grid-cols-2 md:grid-cols-4 justify-around bg-orange text-xs text-heading text-center font-semibold"
           },
           [
             _c(
@@ -51594,7 +51611,7 @@ var render = function() {
     _c(
       "nav",
       {
-        staticClass: "bg-primarybl bg-opacity-75 text-gray-300 lg:px-10",
+        staticClass: "bg-primarybl bg-opacity-75 text-heading lg:px-10",
         attrs: { id: "navbar" }
       },
       [
@@ -51686,7 +51703,40 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _vm._m(0)
+              _c("ul", { staticClass: "ml-auto flex flex-row" }, [
+                _c(
+                  "li",
+                  {
+                    staticClass: "flex justify-between items-center",
+                    on: {
+                      click: function($event) {
+                        return _vm.toggleActive()
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "w-16 h-5 flex items-center bg-gray-300 rounded-full p-1 duration-300 ease-in-out",
+                        class: { "bg-blue-200": _vm.toggleClicked }
+                      },
+                      [
+                        _c("div", {
+                          staticClass:
+                            "bg-white w-8 h-4 rounded-full shadow-md transform duration-300 ease-in-out",
+                          class: { "translate-x-6": _vm.toggleClicked }
+                        })
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(0),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
             ]
           ),
           _vm._v(" "),
@@ -51697,7 +51747,7 @@ var render = function() {
                 "grid grid-flow-row place-items-center lg:flex lg:justify-between"
             },
             [
-              _vm._m(1),
+              _vm._m(2),
               _vm._v(" "),
               _c(
                 "div",
@@ -51743,15 +51793,15 @@ var render = function() {
                         "list-none font-bold italic flex flex-col py-2 place-items-center justify-end mx-auto lg:w-full lg:flex-row lg:-mr-8"
                     },
                     [
-                      _vm._m(2),
-                      _vm._v(" "),
                       _vm._m(3),
                       _vm._v(" "),
                       _vm._m(4),
                       _vm._v(" "),
                       _vm._m(5),
                       _vm._v(" "),
-                      _vm._m(6)
+                      _vm._m(6),
+                      _vm._v(" "),
+                      _vm._m(7)
                     ]
                   )
                 : _vm._e()
@@ -51767,22 +51817,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "ml-auto flex flex-row" }, [
-      _c("li", [
-        _c(
-          "a",
-          { staticClass: "px-4 hover:text-primary", attrs: { href: "#" } },
-          [_vm._v("Sign Up")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("li", [
-        _c(
-          "a",
-          { staticClass: "px-4 hover:text-primary", attrs: { href: "#" } },
-          [_vm._v("Login")]
-        )
-      ])
+    return _c("li", [
+      _c(
+        "a",
+        { staticClass: "px-4 hover:text-primary", attrs: { href: "#" } },
+        [_vm._v("Sign Up")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c(
+        "a",
+        { staticClass: "px-4 hover:text-primary", attrs: { href: "#" } },
+        [_vm._v("Login")]
+      )
     ])
   },
   function() {
@@ -52078,7 +52130,7 @@ var render = function() {
       _vm._v(" "),
       _vm._m(1),
       _vm._v(" "),
-      _c("div", { attrs: { id: "pricing" } }, [
+      _c("div", { staticClass: "lg:w-full", attrs: { id: "pricing" } }, [
         _c(
           "div",
           {
@@ -52090,7 +52142,7 @@ var render = function() {
               "h2",
               {
                 staticClass:
-                  "py-10 px-10 uppercase text-2xl dropshadow text-left text-secondary mb-8 md:px-20"
+                  "py-10 px-10 uppercase text-2xl text-left text-secondary mb-8 md:px-20"
               },
               [_vm._v("Our Pricing Plans")]
             ),
@@ -52301,8 +52353,7 @@ var render = function() {
                 _c(
                   "div",
                   {
-                    staticClass:
-                      "h-96 w-full bg-secondary rounded-lg mx-auto md:w-72"
+                    staticClass: "h-96 w-full bg-secondary rounded-lg mx-auto"
                   },
                   [
                     _c(
@@ -52311,7 +52362,7 @@ var render = function() {
                         staticClass:
                           "bg-primary py-4 rounded-t-lg text-secondary"
                       },
-                      [_vm._v("Plan B")]
+                      [_vm._v("Plan C")]
                     ),
                     _vm._v(" "),
                     _vm._m(4),

@@ -10,6 +10,7 @@ module.exports = {
             secondary: 'var(--color-secondary)',
             primarylight: 'var(--color-primary-light)',
             primarybl: 'var(--color-secondary-bg)',
+            heading: 'var(--color-heading)',
         },
         letterSpacing: {
             widest: '.3em',

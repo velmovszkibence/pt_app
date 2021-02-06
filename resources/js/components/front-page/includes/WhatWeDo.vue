@@ -116,9 +116,9 @@
                 </div>
             </div>
         </div>
-        <div id="pricing">
+        <div id="pricing" class="lg:w-full">
             <div class="max-w-screen-xl text-center mx-auto py-20 px-8 font-bold lg:w-full">
-                <h2 class="py-10 px-10 uppercase text-2xl dropshadow text-left text-secondary mb-8 md:px-20">Our Pricing Plans</h2>
+                <h2 class="py-10 px-10 uppercase text-2xl text-left text-secondary mb-8 md:px-20">Our Pricing Plans</h2>
                 <div class="mx-auto grid grid-cols gap-4 text-black lg:grid-cols-3 lg:gap-8">
                     <div class="h-96 w-full bg-secondary rounded-lg mx-auto mb-6">
                         <h2 class="bg-primary py-4 rounded-t-lg text-secondary">Plan A</h2>
@@ -152,8 +152,8 @@
                         </ul>
                         <a href="#" class="py-2 bg-primary text-secondary flex justify-center w-4/5 mx-auto rounded-lg hover:bg-primarylight">Get Started</a>
                     </div>
-                    <div class="h-96 w-full bg-secondary rounded-lg mx-auto md:w-72">
-                        <h2 class="bg-primary py-4 rounded-t-lg text-secondary">Plan B</h2>
+                    <div class="h-96 w-full bg-secondary rounded-lg mx-auto">
+                        <h2 class="bg-primary py-4 rounded-t-lg text-secondary">Plan C</h2>
                         <span class="flex justify-center pt-4">
                             <i class="pr-1">$</i>
                             <h2 class="font-extrabold italic text-4xl">32.99</h2>
