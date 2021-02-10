@@ -1,5 +1,4 @@
 <template>
-<div class="min-h-1/4">
     <nav id="navbar" class="bg-primarybl bg-opacity-75 text-heading lg:px-10">
         <div class="nav-wrap max-w-screen-lg mx-auto">
             <div class="flex flex-row mx-auto py-2 border-b border-gray-600 text-sm lg:w-full">
@@ -16,8 +15,15 @@
                             <div class="bg-white w-8 h-4 rounded-full shadow-md transform duration-300 ease-in-out" :class="{ 'translate-x-6': toggleClicked,}"></div>
                         </div>
                     </li>
-                    <li><a class="px-4 hover:text-primary" href="#">Sign Up</a></li>
-                    <li><a class="px-4 hover:text-primary" href="#">Login</a></li>
+                    <template v-if="!loggedIn">
+                        <li><router-link to="/register" class="px-4 hover:text-primary" href="#">Sign Up</router-link></li>
+                        <li><router-link to="/login" class="px-4 hover:text-primary" href="#">Login</router-link></li>
+                    </template>
+                    <template v-else>
+                        <li><router-link to="/login" class="px-4 hover:text-primary" href="#">Profile</router-link></li>
+                        <li><a href="#" class="px-4 hover:text-primary" @click.prevent="logout">Logout</a></li>
+                    </template>
+
                 </ul>
             </div>
             <div class="grid grid-flow-row place-items-center lg:flex lg:justify-between">
@@ -36,20 +42,32 @@
                     </div>
                 </div>
                 <ul v-if="closeMenu || screenWidth >= 1024" class="list-none font-bold italic flex flex-col py-2 place-items-center justify-end mx-auto lg:w-full lg:flex-row lg:-mr-8">
-                    <li class="my-2 lg:my-4 lg:ml-auto"><a class="px-20 lg:px-10 py-2 border border-transparent text-secondary hover:text-primary focus:border-primary" href="#">Home</a></li>
-                    <li class="my-2 lg:my-4"><a class="px-20 lg:px-10 py-2 border border-transparent text-secondary hover:text-primary focus:border-primary" href="#">Classes</a></li>
-                    <li class="my-2 lg:my-4"><a class="px-20 lg:px-10 py-2 border border-transparent text-secondary hover:text-primary focus:border-primary" href="#">Team</a></li>
-                    <li class="my-2 lg:my-4"><a class="px-20 lg:px-10 py-2 border border-transparent text-secondary hover:text-primary focus:border-primary" href="#">Pricing</a></li>
-                    <li class="my-2 mb-5 lg:my-4 lg:mr-2"><a class="px-20 lg:px-10 py-2 border border-transparent text-secondary hover:text-primary focus:border-primary" href="#">Contact</a></li>
+                    <li class="my-2 lg:my-4 lg:ml-auto">
+                        <router-link to="/" class="px-20 lg:px-10 py-2 border border-transparent text-secondary hover:text-primary focus:border-primary">
+                            Home
+                        </router-link>
+                    </li>
+                    <li class="my-2 lg:my-4"><a class="px-20 lg:px-10 py-2 border border-transparent text-secondary hover:text-primary focus:border-primary"
+                        href="#classes" @click.prevent="routeName() === 'front' ? scrollTo('classes') : toFrontPage()">Classes</a>
+                    </li>
+                    <li class="my-2 lg:my-4"><a class="px-20 lg:px-10 py-2 border border-transparent text-secondary hover:text-primary focus:border-primary"
+                        href="#team" @click.prevent="routeName() === 'front' ? scrollTo('team') : toFrontPage()">Team</a>
+                    </li>
+                    <li class="my-2 lg:my-4"><a class="px-20 lg:px-10 py-2 border border-transparent text-secondary hover:text-primary focus:border-primary"
+                        href="#pricing" @click.prevent="routeName() === 'front' ? scrollTo('pricing') : toFrontPage()">Pricing</a>
+                    </li>
+                    <li class="my-2 mb-5 lg:my-4 lg:mr-2"><a class="px-20 lg:px-10 py-2 border border-transparent text-secondary hover:text-primary focus:border-primary"
+                        href="#contact">Contact</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-</div>
 </template>
 
 
 <script>
+
 export default {
     data() {
         return {
@@ -58,7 +76,11 @@ export default {
             screenWidth: window.innerWidth
         }
     },
-
+    computed : {
+        loggedIn() {
+            return this.$store.getters['user/loggedIn']
+        }
+    },
     mounted() {
         window.addEventListener('resize', this.resizeWidth)
     },
@@ -68,6 +90,9 @@ export default {
     },
 
     methods: {
+        scrollTo(selector) {
+            document.getElementById(selector).scrollIntoView({ behavior: 'smooth'})
+        },
         resizeWidth() {
             this.screenWidth = window.innerWidth
         },
@@ -81,6 +106,15 @@ export default {
             } else {
                 document.documentElement.removeAttribute('data-theme')
             }
+        },
+        routeName() {
+            return this.$route.name
+        },
+        toFrontPage() {
+            this.$router.push({ 'name': 'front'})
+        },
+        logout() {
+            this.$store.dispatch('user/logoutUser')
         }
     },
 }

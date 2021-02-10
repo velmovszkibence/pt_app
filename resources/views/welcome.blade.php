@@ -12,7 +12,6 @@
     </head>
     <body>
         <div id="app" class="h-screen">
-            <home-page></home-page>
         </div>
     </body>
 </html>
