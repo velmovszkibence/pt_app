@@ -15648,30 +15648,10 @@ vue__WEBPACK_IMPORTED_MODULE_4__.default.component('font-awesome-icon', _fortawe
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_4__.default.config.productionTip = false; // const app = new Vue({
-//     store,
-//     el: '#app',
-// });
-
+vue__WEBPACK_IMPORTED_MODULE_4__.default.config.productionTip = false;
 new vue__WEBPACK_IMPORTED_MODULE_4__.default({
   router: _router__WEBPACK_IMPORTED_MODULE_6__.default,
   store: _store__WEBPACK_IMPORTED_MODULE_7__.default,
-  // created() {
-  //   const userString = localStorage.getItem('user')
-  //   if(userString) {
-  //     const userData = JSON.parse(userString)
-  //     this.$store.commit('SET_USER_DATA', userData)
-  //   }
-  //   axios.interceptors.response.use(
-  //     response => response,
-  //     error => {
-  //       if(error.response.status === 401) {
-  //         this.$store.dispatch('logout')
-  //       }
-  //       return Promise.reject(error)
-  //     }
-  //   )
-  // },
   created: function created() {
     var _this = this;
 
